@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @RequestMapping("/login")
-
-
     public String login() {
         return "hello user";
 
