@@ -33,4 +33,4 @@ spring:
     port: 6379
     timeout: 10s
 server:
-  port: 8084
+  port: 8082
