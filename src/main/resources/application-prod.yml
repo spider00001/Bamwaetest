@@ -1,0 +1,46 @@
+# 生产环境
+spring:
+  config:
+    activate:
+      on-profile: prod
+  #  支持REST风格
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  #  数据源druid
+  datasource:
+    url: jdbc:mysql://123.56.124.177:3306
+    username: root
+    password: Gwz@159244
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filters: stat,wall
+      maxPoolPreparedStatementPerConnectionSize: 20
+      useGlobalDataSourceStat: true
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  redis:
+    password: Gwz@159244
+    host: 123.56.124.177
+    port: 6379
+    timeout: 10s
+# SSL配置
+server:
+  port: 8082    #HTTPS协议默认端口号为443，需要使用其他端口时，您可以在此处自定义。
+  ssl:
+    key-alias: tomcat
+    key-store-password: C2BV2Fny    #填写pfx-password.txt文件内的密码。
+    key-store-type: PKCS12
+    key-store: src/main/resources/7776092_bamwae.cn.pfx    #您需要使用实际的证书名称替换domain_name.pfx。
